@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Add CSS style sheets-->
+        <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='css/home.css')}}">
+        <title>
+            PlebMTG data refresh page
+        </title>
+        <!-- Add javascript code -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}">
+        </script>
+    </head>
+    <body>
+        <button onclick="darkwhite()">Toggle dark mode</button>
+        <header>
+          <div class="container">
+            <h1 class="logo">plebMTG</h1>
+            <strong><nav>
+              <ul class="menu">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('statistics')}}">Statistical Results</a></li>
+                <li><a href="{{url_for('query')}}">Search Results</a></li>
+              </ul>
+            </nav></strong>
+          </div>
+        </header>
+        <br>
+        <form method="POST">
+            <img src="https://raw.githubusercontent.com/ChengHaoKe/ChengHaoKe/main/logos/cmr-354-rejuvenating-springs.jpg"
+                 alt="Rejuvenating Springs" class="refreshimage">
+            <h3>
+                 Click to refresh the backend data
+            </h3>
+            <p>Note: This process will take at least 7-10 minutes to complete</p>
+            <br>
+            <input type="submit" value="Refresh data"/>
+            <br>
+            <br>
+            <span id="status">{{ status }}</span>
+            <br>
+            <br>
+            <span id="logs">{{ logs }}</span>
+        </form>
+    </body>
+</html>

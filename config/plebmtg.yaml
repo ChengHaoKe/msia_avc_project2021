@@ -1,0 +1,17 @@
+get_data:
+  merge_all:
+    percentkeep: 0.03
+app:
+  refresh:
+    refreshfile: "lastupdate.txt"
+clustering:
+  run_kmeans:
+    method: "silhouette"
+    noplot: True
+regression:
+  run_reg:
+    groupvar: "scryfallId"
+    family: "gaussian"
+    scale: False
+s3tofrom:
+  bucket: "2021-msia423-ke-chenghao"

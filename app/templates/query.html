@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Add CSS style sheets-->
+        <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='css/home.css')}}">
+        <title>
+            PlebMTG Similar Cards
+        </title>
+        <!-- Add javascript code -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}">
+        </script>
+    </head>
+    <body>
+        <button onclick="darkwhite()">Toggle dark mode</button>
+        <header>
+          <div class="container">
+            <h1 class="logo">plebMTG</h1>
+            <strong><nav>
+              <ul class="menu">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('statistics')}}">Statistical Results</a></li>
+              </ul>
+            </nav></strong>
+          </div>
+        </header>
+        <br>
+        <form method="POST">
+            <h3>
+                 Cards that are most similar to {{ card_name }}
+            </h3>
+            <img src="{{ card_image_url }}" alt="mtg" class="center">
+            <br>
+            <br>
+            <table id='querytable' class='display'>
+                <thead>
+                  <tr>
+                  {% for header in headers %}
+                    <th>{{ header }}</th>
+                  {% endfor %}
+                  </tr>
+                </thead>
+                {% for table in tkmean %}
+    {#                {{ table|safe }}#}
+                    <tr>
+                        <td>{{ table.name }}</td>
+                        <td>{{ table.kmgroups }}</td>
+                        <td>{{ table.card }}</td>
+                        <td>{{ table.distance }}</td>
+                        <td>{{ table.matchgroup }}</td>
+                        <td>{{ table.price }}</td>
+                        <td><img src="{{ table.image_url }}" alt="mtg card" class="center"></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+        </form>
+    </body>
+</html>

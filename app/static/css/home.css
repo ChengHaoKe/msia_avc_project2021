@@ -1,0 +1,75 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+
+body {
+  height: 100%;
+  width: 99%;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Open Sans', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: 45%;
+    width: 25%;
+    height: 25%;
+}
+
+.statimage {
+    display: block;
+    margin-left: auto;
+    margin-right: 45%;
+    width: 30%;
+    height: auto;
+}
+
+.refreshimage {
+    display: block;
+    margin-left: auto;
+    margin-right: 45%;
+    width: 15%;
+    height: auto;
+}
+
+.homeheader h1 {
+    float: left;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 0 solid;
+    padding: 5px;
+    /*width: 90%;*/
+}
+
+/*td {*/
+/*    padding: 0 10px 0 0;*/
+/*}*/
+
+#querytable, #querytable td, #querytable th {
+    border: 1px solid;
+    text-align: center;
+}
+
+#querytable img{
+    width: 30%;
+    height: auto;
+    display: block;
+}
+
+tr.spaceunder>td {
+  padding-bottom: 2em;
+}
+
+/*#hometable {*/
+/*    border-collapse: separate;*/
+/*    border-spacing: 0 20px;*/
+/*}*/

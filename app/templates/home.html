@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Add CSS style sheets-->
+        <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='css/home.css')}}">
+        <title>
+            plebMTG
+        </title>
+        <!-- Add javascript code -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+        </script>
+    </head>
+    <body>
+        <button onclick="darkwhite()">Toggle light mode</button>
+        <header>
+          <div class="homeheader">
+            <h1 class="logo">plebMTG</h1>
+            <img src="https://raw.githubusercontent.com/ChengHaoKe/ChengHaoKe/main/logos/mtglogo.jpg"
+                 alt="mtg" class="center">
+          </div>
+        </header>
+        <br>
+        <br>
+        <br>
+        <!-- Table codes -->
+        <table>
+         <tr>
+             <td>
+                 <br>
+                 <span class="stat0">Statistical results:</span>
+                 <br>
+             </td>
+             <td>
+                 <br>
+                 <button type="button" onclick="window.location.href='{{url_for('statistics')}}'">
+                     Open statistical results
+                 </button>
+                 <br>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <br>
+                 <span class="search0">Search results:</span>
+                 <br>
+             </td>
+             <td>
+                 <br>
+                 <button type="button" onclick="window.location.href='{{url_for('query')}}'">
+                     Open search results
+                 </button>
+                 <br>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                 <br>
+                 <span class="stat0">Statistical results:</span>
+                 <br>
+             </td>
+             <td>
+                 <br>
+                 <button type="button" onclick="window.location.href='{{url_for('refresh')}}'">
+                     Refresh data
+                 </button>
+                 <br>
+             </td>
+         </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+         <form method="POST">
+             <h3>
+                 Please insert MTG search parameters here
+             </h3>
+             <p>
+                 Note: this app only contains information for non-basic land, non-promo and non-foil cards in Standard
+             </p>
+             <!-- Table codes -->
+             <table id="hometable">
+                <tr class="spaceunder">
+                    <td><span>Card Name: </span></td>
+                    <td><input type="text" name="cardname" id="cardname" placeholder="" onload="keyf();"
+                               oninput="keyf();" onclick="keyf();"/></td>
+                    <td><span id="key1" style="color:red;">Card: </span></td>
+                 </tr>
+                 <tr>
+                    <td><span>Number of similar cards to show: </span></td>
+                    <td><select name='ncard0' id="ncard0" onchange="qnumb();">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select></td>
+                    <td><span id="ncard1">Selection: 10</span></td>
+                </tr>
+                 <tr>
+                    <td></td>
+                    <!-- button -->
+                    <td colspan="2">
+                        <br>
+                        <input type="submit" value="Start Search" onclick="return query0();"/>
+                    </td>
+                 </tr>
+             </table>
+         </form>
+        <script>
+          $( function() {
+            var availableTags = [
+                {% for card in cards %}
+                    "{{ card }}",
+                {% endfor %}
+            ];
+            $( "#cardname" ).autocomplete({
+              source: availableTags
+            });
+          } );
+      </script>
+    </body>
+</html>

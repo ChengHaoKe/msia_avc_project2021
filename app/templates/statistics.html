@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Add CSS style sheets-->
+        <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='css/home.css')}}">
+        <title>
+            PlebMTG statistical results
+        </title>
+        <!-- Add javascript code -->
+        <script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}">
+        </script>
+    </head>
+    <body>
+        <button onclick="darkwhite()">Toggle dark mode</button>
+        <header>
+          <div class="container">
+            <h1 class="logo">plebMTG</h1>
+            <strong><nav>
+              <ul class="menu">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('query')}}">Search Results</a></li>
+              </ul>
+            </nav></strong>
+          </div>
+        </header>
+        <br>
+        <h3>
+             The effect of card attributes on price
+        </h3>
+        <img src="https://raw.githubusercontent.com/ChengHaoKe/ChengHaoKe/main/logos/readingcard.png" alt="Serra Angel"
+             class="statimage">
+        <h4>
+             Generalized estimating equations (GEE):
+        </h4>
+        <br>
+        <br>
+        {% for table in tgee %}
+            {{ table|safe }}
+        {% endfor %}
+        <br>
+        <h4>
+             Ordinary Linear Regression (OLS):
+        </h4>
+        <br>
+        <br>
+        {% for table in tols %}
+            {{ table|safe }}
+        {% endfor %}
+        <br>
+    </body>
+</html>
